@@ -7,9 +7,17 @@ export const MemberForm = (props) => {
         setMember({...member, [event.target.name] : event.target.value})
         console.log(event.target.name, event.target.value)
     }
+
+    const submitMemberForm = event => {
+        event.preventDefault();
+        props.addNewMember(member)
+        setMember({id: '', name: '', email: '', role: ''})
+    }    
+
+
     return (
         <div>
-            <form>
+            <form onSubmit={submitMemberForm}>
                 <label htmlFor='name'>Name</label>
                     <input
                     name='name'
@@ -37,6 +45,7 @@ export const MemberForm = (props) => {
                     value={member.role}
                     onChange={memberChangeHandler}
                     />
+                <button type='submit'>Submit</button>
             </form>
         </div>
     )
