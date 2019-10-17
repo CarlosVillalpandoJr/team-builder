@@ -12,6 +12,11 @@ function App() {
     setMembers([...members, member])
   }
 
+  const handleSearch = event => {
+    setSearch(event.target.value)
+    console.log(event.target.value)
+  }
+
   return (
     <div className="App">
       <h1>Team Members</h1>
@@ -19,7 +24,7 @@ function App() {
       name='searchField' 
       id='searchField' 
       placeholder='Search Members' 
-      value='search' 
+      value={search.name} 
       onChange={handleSearch}
       /> 
       <MemberForm addNewMember={addNewMember} />
