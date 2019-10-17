@@ -14,9 +14,12 @@ function App() {
 
   const handleSearch = event => {
     setSearch(event.target.value)
-    console.log(event.target.value)
   }
 
+  const filteredMembers = members.filter(memb => 
+    memb.name.toLowerCase().includes(search.toLowerCase())
+    )
+  
   return (
     <div className="App">
       <h1>Team Members</h1>
@@ -28,7 +31,7 @@ function App() {
       onChange={handleSearch}
       /> 
       <MemberForm addNewMember={addNewMember} />
-      <MemberCard members={members} />
+      <MemberCard members={filteredMembers} />
     </div>
   );
 }
